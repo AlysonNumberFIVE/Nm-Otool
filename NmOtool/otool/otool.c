@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:44:25 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 12:21:07 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/16 17:31:58 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int			main(int argc, char **argv)
 		return (0);
 	}
 	i = 1;
-//	filename = argv[1];
 	while (i < argc)
 	{
 		filename = argv[i];
