@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:44:25 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 17:31:58 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/16 18:04:32 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ int			is_dynamic_lib(unsigned char *content)
 	return (-1);
 }
 
+int			dymlib_magic(unsigned char *content)
+{
+	if (content[0] == 0xca &&
+			content[1] == 0xfe &&
+			content[2] == 0xba &&
+			content[3] == 0xbe)
+		return (1);
+	return (-1);
+}
+
+
 int			find_magic_number(unsigned char *content)
 {
 	if ((content[0] == 0xcf || content[0] == 0xce) &&
@@ -38,6 +49,20 @@ int			find_magic_number(unsigned char *content)
 		content[7] == 0x01)
 		return (1);
 	return (-1);
+}
+
+void		*dynamic_lib_handler(unsigned char *content, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (find_magic_number(&content[i]) == 1)
+			break ;
+		i++;
+	}
+	return ((void*)&content[i]);
 }
 
 void		*dynamic_lib_read(void *content, size_t size)
@@ -79,11 +104,13 @@ int			main(int argc, char **argv)
 	{
 		filename = argv[i];
 		read_file(&content, &size, filename);
+		if (dymlib_magic(content))
+			content = dynamic_lib_read(content, size);
 		if (is_dynamic_lib((unsigned char *)content) == 1)
 		{
 			ft_putstr("Archive files not handled. [Coming soon]\n");
 			return (1);
-		}
+		} 
 		otool(content, filename);
 		i++;
 	}
