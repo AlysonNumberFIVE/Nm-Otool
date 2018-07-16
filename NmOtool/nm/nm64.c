@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:12 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:24:26 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/16 17:37:50 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void		string_segment_64(void *content,
 			i++;
 			continue ;
 		}
-		i++;
 		name = &string_tab[info->n_un.n_strx];
 		print_address_values(info->n_value, info->n_sect);
+		i++;
 		which(info->n_type, info->n_sect, info->n_value);
 		print_name(name);
 	}

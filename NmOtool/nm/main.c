@@ -6,13 +6,13 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:34:37 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/16 17:41:36 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-int		signature_check(unsigned char *content)
+int				signature_check(unsigned char *content)
 {
 	if ((content[0] == 0xcf || content[0] == 0xce) &&
 		content[1] == 0xfa &&
@@ -26,21 +26,53 @@ int		signature_check(unsigned char *content)
 	return (-1);
 }
 
-void	*find_start(unsigned char *content, size_t size)
+size_t			func_name(unsigned char *content)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < size)
+	while (content[i])
 	{
-		if (signature_check(&content[i]) == 1)
-			return ((void*)&content[i]);
+		ft_putchar(content[i]);
 		i++;
 	}
-	return ((void*)content);
+	ft_putstr("):\n");
+	return (i);
 }
 
-int		main(int argc, char **argv)
+unsigned char	*find_signature(unsigned char *content)
+{
+	size_t	i;
+
+	i = 0;
+	while (42)
+	{
+		if (signature_check(&content[i]) == 1)
+			break ;
+		i++;
+	}
+	return (&content[i]);
+}
+
+void			last_word(unsigned char *content, size_t size)
+{
+	size_t i;
+
+	i = size - 8;
+	while (i > 0)
+	{
+		if (content[i] == 0x0a && content[i - 1] == 0x60 &&
+			content[i - 2] == 0x20)
+			break ;
+		i--;
+	}
+	i++;
+	i += func_name(&content[i]);
+	content = find_signature(&content[i]);
+	symbols(content);
+}
+
+int				main(int argc, char **argv)
 {
 	char	*filename;
 	void	*content;
@@ -53,7 +85,7 @@ int		main(int argc, char **argv)
 	read_file(&content, &size, filename);
 	if (arc_magic(content) == 1)
 	{
-		ft_putstr("archive files not handled. [Coming Soon]\n");
+		arc_nm(content, size, filename);
 		return (1);
 	}
 	content = find_start((unsigned char *)content, size);

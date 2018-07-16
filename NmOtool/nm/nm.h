@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:44:09 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/16 17:15:56 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,29 @@
 # include <mach-o/swap.h>
 # include "libft/libft.h"
 
+void			last_word(unsigned char *content, size_t size);
+void			arc_nm(void *content, size_t size, char *filename);
+size_t			find_start_position(unsigned char *content,
+			size_t size);
+int      	   extract_name_list(unsigned char *content, size_t size);
+int			find_begin(unsigned char *content, size_t size);
+int			grab_labels(unsigned char *content, size_t size);
+int			end_of_functions(unsigned char *content);
+void		*first_obj_name(unsigned char *content, size_t *size);
+void		*find_start(unsigned char *content, size_t size);
+void						loop_nm(unsigned char *content, size_t size);
+unsigned char				*function_name(unsigned char *content, size_t size);
+
+char						**arraydup(char **array);
+char						*charpush(char *str, char c);
+char						**arraypush(char **arr, char *str);
+int							arraylen(char **arr);
 void						special_letters(unsigned n_sect,
 					unsigned int n_type);
 int							arc_magic(unsigned char *content);
 int							signature_check(unsigned char *content);
-void						recursive_nm(unsigned char *content, size_t size,
-					size_t count);
+void						recursive_nm(unsigned char *content, size_t size, 
+		int i, char *filename);
 void						which(unsigned int n_type, unsigned int n_sect,
 							unsigned int n_value);
 int							is_64_or_32(struct mach_header *head);
@@ -41,4 +58,8 @@ void						which_is_it_again(int n_sect, int n_type);
 struct symtab_command		*iterate_through_load_commands(struct
 					load_command *comm, int command_num);
 void						print_name(const char *name);
+unsigned char				*function_name(unsigned char *content, size_t size);
+unsigned char				*obj_name(unsigned char *content);
+//void						arc_nm(void *content, size_t size);
+
 #endif

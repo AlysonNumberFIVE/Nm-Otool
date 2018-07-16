@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:28:52 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:32:02 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/16 17:44:04 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int			end_arc_signature(unsigned char *content)
 		content[1] == 0x31 &&
 		content[2] == 0x2f &&
 		content[3] == 0x32)
+	{
 		return (1);
+	}
 	return (-1);
 }
 
@@ -38,10 +40,10 @@ int			arc_magic(unsigned char *content)
 
 int			handle_arc_end(unsigned char *content, size_t size)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
-	while (i < size)
+	while (i + 4 < size)
 	{
 		if (end_arc_signature(&content[i]) == 1)
 			break ;
@@ -52,10 +54,10 @@ int			handle_arc_end(unsigned char *content, size_t size)
 
 int			handle_arc_start(unsigned char *content, size_t size)
 {
-	size_t	i;
+	size_t			i;
 
 	i = 0;
-	while (i < size)
+	while (i + 8 < size)
 	{
 		if (signature_check(&content[i]) == 1)
 			break ;
@@ -64,19 +66,22 @@ int			handle_arc_start(unsigned char *content, size_t size)
 	return (i);
 }
 
-void		recursive_nm(unsigned char *content, size_t size, size_t count)
+void		recursive_nm(unsigned char *content, size_t size,
+		int i, char *filename)
 {
 	size_t			start;
 	unsigned char	*file;
 	size_t			end;
 
-	if (count + 3 > size)
-		exit(1);
+	if (i == 1)
+		return ;
+	ft_putstr("(");
+	ft_putstr(filename);
+	content = function_name(content, size);
 	start = handle_arc_start(content, size);
 	file = &content[start];
 	end = handle_arc_end(content, size);
 	symbols(&content[start]);
-	count += end;
 	end += 3;
-	recursive_nm(&content[end], size, count);
+	recursive_nm(&content[end], size, i - 1, filename);
 }
