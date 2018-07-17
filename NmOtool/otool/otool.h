@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:54:02 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 11:23:23 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 15:33:12 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <mach-o/loader.h>
 # include <stdio.h>
 
+void						line_put(char *filename);
+int							find_magic_number(unsigned char *content);
+void						usage(void);
+void						*dynamic_lib_read(void *content, size_t size);
 int							endswith(char *str, char *end);
 void						nm_so(unsigned char *content, size_t size,
 							void (*symbols)(void *, int flag), char *filepath);
@@ -43,5 +47,17 @@ void						otool_64(struct mach_header *header, void *content,
 						int flag);
 void						print_section(void *content,
 							size_t start, size_t limit, size_t size);
+unsigned char				*print_obj_name(unsigned char *content, size_t size);
+unsigned char				*find_first_label_seg(unsigned char *content, 
+						size_t size);
+unsigned char				*exit_header(unsigned char *content, 
+						size_t size);
+unsigned char				*leave_header(unsigned char *content, 
+						size_t size);
+int							start_frame(unsigned char *content, size_t size);
+unsigned char			*find_stack_frame(unsigned char *content, size_t size);
+unsigned char			*reverse_to_next_frame(unsigned char *content);
+int             		signature_check(unsigned char *content);
+int 					arc_magic(unsigned char *content);
 
 #endif

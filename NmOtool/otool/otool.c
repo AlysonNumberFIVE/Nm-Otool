@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:44:25 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 11:23:37 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 15:34:54 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int			dymlib_magic(unsigned char *content)
 	return (-1);
 }
 
-
 int			find_magic_number(unsigned char *content)
 {
 	if ((content[0] == 0xcf || content[0] == 0xce) &&
@@ -65,71 +64,31 @@ void		*dynamic_lib_handler(unsigned char *content, size_t size)
 	return ((void*)&content[i]);
 }
 
-void		*dynamic_lib_read(void *content, size_t size)
-{
-	size_t			i;
-	unsigned char	*file;
-
-	file = (unsigned char *)content;
-	i = 0;
-	while (i < size)
-	{
-		if (find_magic_number(&file[i]) == 1)
-			break ;
-		i++;
-	}
-	return ((void*)&file[i]);
-}
-
-void		usage(void)
-{
-	ft_putstr("Usage : ./ft_otool [file to examine]");
-	return ;
-}
-
 int			main(int argc, char **argv)
 {
 	char	*filename;
 	void	*content;
 	size_t	size;
 	int		i;
-	void	(*otool_ptr )(void *, int );
+	void	(*otool_ptr)(void *, int);
 
 	otool_ptr = &otool;
 	if (argc == 1)
-	{
 		usage();
-		return (0);
-	}
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc && argc > 1)
 	{
 		filename = argv[i];
-		read_file(&content, &size, filename);
-		if (is_dynamic_lib(content) == 1)
-		{
-			nm_so(content, size, otool_ptr, filename);
-			i++;
+		if (read_file(&content, &size, filename) == -1)
 			continue ;
-		}
-		if (dymlib_magic(content))
-			content = dynamic_lib_read(content, size);
-		if (is_dynamic_lib((unsigned char *)content) == 1)
+		if (is_dynamic_lib(content) == 1)
+			nm_so(content, size, otool_ptr, filename);
+		else
 		{
-			ft_putstr("Archive files not handled. [Coming soon]\n");
-			return (1);
-		} 
-		otool(content, 0);
-		i++;
+			if (dymlib_magic(content))
+				content = dynamic_lib_read(content, size);
+			line_put(filename);
+			otool(content, 0);
+		}
 	}
-	return (0);
 }
-
-
-
-
-
-
-
-
-
