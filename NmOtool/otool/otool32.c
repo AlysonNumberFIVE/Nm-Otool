@@ -6,13 +6,13 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:46:50 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 11:26:59 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 15:39:07 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
 
-void		object_seg_32(struct mach_header *seg, void *content, 
+void		object_seg_32(struct mach_header *seg, void *content,
 		int flag)
 {
 	struct section	*sect;

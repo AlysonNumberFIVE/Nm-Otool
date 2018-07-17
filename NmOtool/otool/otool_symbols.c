@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:50:00 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 12:09:32 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 15:38:43 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void					otool(void *content, int flag)
 
 	header = content;
 	is_64 = is_64_or_32(header);
-	ft_putstr("Contents of (__TEXT,__text) section");;
+	ft_putstr("Contents of (__TEXT,__text) section");
 	if (is_64 == 1)
 		otool_64(header, content, flag);
 	else
