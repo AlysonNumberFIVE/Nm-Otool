@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 10:37:09 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 14:19:09 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int				main(int argc, char **argv)
 		filename = ft_strdup("a.out");
 	else
 		filename = ft_strdup(argv[1]);
-	read_file(&content, &size, filename);
+	if (read_file(&content, &size, filename) == -1)
+		return (0);
 	if (arc_magic(content) == 1)
 	{
 		filepath = ft_strdup(argv[1]);

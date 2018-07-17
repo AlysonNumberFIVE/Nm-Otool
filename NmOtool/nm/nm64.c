@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:12 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 17:37:50 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 13:08:15 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ void		string_segment_64(void *content,
 }
 
 void		nm_64(struct mach_header *header,
-			void *content)
+			void *content, size_t size)
 {
 	struct mach_header_64	*header64;
 	struct load_command		*load;
 	int						command_num;
 	struct symtab_command	*tab;
 
+	size = 0;
 	header64 = (struct mach_header_64 *)header;
 	load = (struct load_command *)&header64[1];
 	command_num = header64->ncmds;

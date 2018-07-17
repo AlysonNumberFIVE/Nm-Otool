@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 09:44:44 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 12:53:32 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <mach-o/swap.h>
 # include "libft/libft.h"
 
+void						segments(unsigned char *content, size_t size);
 int							endswith(char *str, char *end);
 void						nm_so(unsigned char *content, size_t size,
 					void (*symbols)(void  *), char *filepath);
@@ -52,7 +53,8 @@ int							read_file(void **content, size_t *size,
 void						symbols(void *content);
 void						print_address_values(unsigned long long hex,
 					int flag);
-void						nm_64(struct mach_header *header, void *content);
+void						nm_64(struct mach_header *header, 
+					void *content, size_t size);
 void						nm_32(struct mach_header *header,
 							void *content);
 void						string_segment(void *content,
@@ -64,5 +66,25 @@ void						print_name(const char *name);
 unsigned char				*function_name(unsigned char *content, size_t size);
 unsigned char				*obj_name(unsigned char *content);
 //void						arc_nm(void *content, size_t size);
+unsigned char				*reverse_to_next_frame(unsigned char *content);
+unsigned char				*next_frame(unsigned char *content, size_t size);
+unsigned char				*name_space(unsigned char *content, size_t size);
+unsigned char				*print_labels(unsigned char *content, size_t size);
+unsigned char				*print_names(unsigned char *content, char *filepath);
+unsigned char				*print_obj_name(unsigned char *content, size_t size);
+unsigned char				*find_first_label_seg(unsigned char *content, size_t size);
+
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+

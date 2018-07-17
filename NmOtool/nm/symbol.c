@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:27:01 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 10:42:12 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 14:19:31 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void						which(unsigned int n_type,
 	{
 		if (n_value != 0)
 			ft_putstr(" C ");
-		else	
+		else
 			ft_putstr(" U ");
 	}
 	else if (val == N_ABS)
@@ -75,11 +75,13 @@ void						symbols(void *content)
 {
 	int						is_64;
 	struct mach_header		*header;
+	size_t					size;
 
+	size = 0;
 	header = content;
 	is_64 = is_64_or_32(header);
 	if (is_64 == 1)
-		nm_64(header, content);
+		nm_64(header, content, size);
 	else
 		nm_32(header, content);
 }
