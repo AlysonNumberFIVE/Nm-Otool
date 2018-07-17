@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 17:41:36 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 08:32:32 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,16 @@ int				main(int argc, char **argv)
 	char	*filename;
 	void	*content;
 	size_t	size;
+	void	(*symbol_ptr)(void *);
 
+	symbol_ptr = &symbols;
 	if (argc == 1)
 		filename = ft_strdup("a.out");
 	else
 		filename = ft_strdup(argv[1]);
 	read_file(&content, &size, filename);
+	nm_so(content, size, symbol_ptr);
+	exit(1);
 	if (arc_magic(content) == 1)
 	{
 		arc_nm(content, size, filename);

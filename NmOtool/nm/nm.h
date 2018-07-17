@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 17:15:56 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 08:32:57 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@
 # include <mach-o/swap.h>
 # include "libft/libft.h"
 
-void			last_word(unsigned char *content, size_t size);
-void			arc_nm(void *content, size_t size, char *filename);
-size_t			find_start_position(unsigned char *content,
-			size_t size);
-int      	   extract_name_list(unsigned char *content, size_t size);
-int			find_begin(unsigned char *content, size_t size);
-int			grab_labels(unsigned char *content, size_t size);
-int			end_of_functions(unsigned char *content);
-void		*first_obj_name(unsigned char *content, size_t *size);
-void		*find_start(unsigned char *content, size_t size);
+void						nm_so(unsigned char *content, size_t size,
+					void (*symbols)(void  *));
+void						last_word(unsigned char *content, size_t size);
+void						arc_nm(void *content, size_t size, char *filename);
+size_t						find_start_position(unsigned char *content,
+					size_t size);
+int      	   				extract_name_list(unsigned char *content, size_t size);
+int							find_begin(unsigned char *content, size_t size);
+int							grab_labels(unsigned char *content, size_t size);
+int							end_of_functions(unsigned char *content);
+void						*first_obj_name(unsigned char *content, size_t *size);
+void						*find_start(unsigned char *content, size_t size);
 void						loop_nm(unsigned char *content, size_t size);
 unsigned char				*function_name(unsigned char *content, size_t size);
 
@@ -40,7 +42,7 @@ void						special_letters(unsigned n_sect,
 int							arc_magic(unsigned char *content);
 int							signature_check(unsigned char *content);
 void						recursive_nm(unsigned char *content, size_t size, 
-		int i, char *filename);
+					int i, char *filename);
 void						which(unsigned int n_type, unsigned int n_sect,
 							unsigned int n_value);
 int							is_64_or_32(struct mach_header *head);

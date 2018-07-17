@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:50:00 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 12:12:24 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 08:36:33 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,11 @@ struct section_64		*find_segment_position_64(
 	return (sect);
 }
 
-void					otool(void *content, char *filename)
+void					otool(void *content)
 {
 	struct mach_header		*header;
 	int						is_64;
 
-	intro_info(filename);
 	header = content;
 	is_64 = is_64_or_32(header);
 	if (is_64 == 1)

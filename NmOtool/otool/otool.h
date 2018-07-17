@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:54:02 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 17:31:26 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 08:36:46 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 # include <mach-o/loader.h>
 # include <stdio.h>
 
+void						nm_so(unsigned char *content, size_t size,
+							void (*symbols)(void *));
 void						print_mem_val(unsigned long long hex);
 int							hex_number_length(size_t number);
 void						intro_info(char *filename);
 int							is_dynamic_lib(unsigned char *content);
 int							read_file(void **content, size_t *size,
 							char *filename);
-void						otool(void *content, char *filename);
+void						otool(void *content);
 int							is_64_or_32(struct mach_header *head);
 struct segment_command_64	*iterate_to_textseg(
 							struct load_command *comm,
