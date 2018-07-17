@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:27:01 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:28:07 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 10:42:12 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ void						which(unsigned int n_type,
 	shutup = n_value;
 	val = n_type & N_TYPE;
 	if (val == N_UNDF)
-		ft_putstr(" U ");
+	{
+		if (n_value != 0)
+			ft_putstr(" C ");
+		else	
+			ft_putstr(" U ");
+	}
 	else if (val == N_ABS)
 		ft_putstr(" A ");
 	else if (val == N_SECT)

@@ -6,16 +6,16 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:32:06 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:33:24 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 09:54:59 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 #include "nm.h"
 
 int			s_check(unsigned int val)
 {
 	if (val == 49 || val == 41 || val == 50 ||
-			val == 39 || val == 34)
+			val == 39 || val == 34 || val == 36)
 		return (1);
 	return (-1);
 }

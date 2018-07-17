@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 08:32:57 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 09:44:44 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <mach-o/swap.h>
 # include "libft/libft.h"
 
+int							endswith(char *str, char *end);
 void						nm_so(unsigned char *content, size_t size,
-					void (*symbols)(void  *));
+					void (*symbols)(void  *), char *filepath);
 void						last_word(unsigned char *content, size_t size);
 void						arc_nm(void *content, size_t size, char *filename);
 size_t						find_start_position(unsigned char *content,
