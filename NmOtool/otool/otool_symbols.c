@@ -6,16 +6,20 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:50:00 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 08:36:33 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 12:09:32 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
+#include <stdio.h>
 
 void					print_x(size_t limit)
 {
 	ft_putchar('\n');
-	print_hex_value((unsigned long long)limit);
+	if (limit == 0)
+		ft_putstr("0000000000000000 ");
+	else
+		print_hex_value((unsigned long long)limit);
 	ft_putstr("     ");
 }
 
@@ -68,15 +72,16 @@ struct section_64		*find_segment_position_64(
 	return (sect);
 }
 
-void					otool(void *content)
+void					otool(void *content, int flag)
 {
 	struct mach_header		*header;
 	int						is_64;
 
 	header = content;
 	is_64 = is_64_or_32(header);
+	ft_putstr("Contents of (__TEXT,__text) section");;
 	if (is_64 == 1)
-		otool_64(header, content);
+		otool_64(header, content, flag);
 	else
-		otool_32(header, content);
+		otool_32(header, content, flag);
 }

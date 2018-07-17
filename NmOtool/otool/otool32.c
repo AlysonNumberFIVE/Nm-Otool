@@ -6,13 +6,14 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:46:50 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 12:22:32 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 11:26:59 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
 
-void		object_seg_32(struct mach_header *seg, void *content)
+void		object_seg_32(struct mach_header *seg, void *content, 
+		int flag)
 {
 	struct section	*sect;
 	size_t			start;
@@ -29,14 +30,17 @@ void		object_seg_32(struct mach_header *seg, void *content)
 		sect = (struct section *)((void*)sect + sizeof(struct section *));
 	}
 	start = sect->offset;
-	limit = sect->addr;
+	if (flag == 1)
+		limit = 0;
+	else
+		limit = sect->addr;
 	size = sect->size;
 	print_section(content, start, limit, size);
 	ft_putchar('\n');
 }
 
-void		otool_32(struct mach_header *header, void *content)
+void		otool_32(struct mach_header *header, void *content, int flag)
 {
 	header = (struct mach_header *)content;
-	object_seg_32(header, content);
+	object_seg_32(header, content, flag);
 }

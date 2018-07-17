@@ -4,23 +4,23 @@
 
 #include "otool.h"
 
-
 size_t			g_int = 0;
 
 unsigned char	*print_obj_name(unsigned char *content, size_t size)
 {
 	size_t		i;
 
-	i = 0;
+	ft_putchar('(');
+	i = 0;	
 	while (content[i] != 0x20)
 	{
-		if (g_int >= size)
+		if (g_int >= size) 
 			exit(1);
 		ft_putchar(content[i]);
 		i++;
 		g_int++;
 	}
-	ft_putchar('\n');
+	ft_putstr("):\n");
 	return (&content[i]);
 }
 
@@ -123,7 +123,6 @@ unsigned char	*reverse_to_next_frame(unsigned char *content)
 	i = 0;
 	while (content[i] != 0x00)
 	{
-		ft_putchar(content[i]);
 		i--;
 		g_int--;
 	}
@@ -147,20 +146,84 @@ unsigned char	*next_frame(unsigned char *content, size_t size)
 	return (reverse_to_next_frame(&content[i]));
 }
 
+unsigned char	*name_space(unsigned char *content, size_t size)
+{
+	size_t		i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (content[i] == 0x00 &&
+				content[i + 1] == 0x00 &&
+				content[i + 2] == 0x5f)
+			break;
+		i++;
+	}
+	i += 2;
+	return (&content[i]);
+}
+
+unsigned char	*print_labels(unsigned char *content, size_t size)
+{
+	size_t		i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (content[i] == 0x00 &&
+			content[i + 1] == 0x00 &&
+			content[i + 2] == 0x00 &&
+			content[i + 3] == 0x00)
+			break ;
+		i++;
+	}
+	return (name_space(&content[i], size));
+}
+
+unsigned char	*print_names(unsigned char *content, char *filepath)
+{
+	size_t		i;
+
+	ft_putstr(filepath);
+	ft_putstr("(");
+	i = 0;
+	while (content[i])
+	{
+		ft_putchar(content[i]);
+		i++;
+	}
+	ft_putstr("):\n");
+	i++;
+	return (&content[i]);
+}
+
 void			nm_so(unsigned char *content, size_t size, 
-				void (*symbols)(void *))
+				void (*symbols)(void *, int flag), char *filepath)
 {
 	unsigned char	*file;
 	size_t			i;
-	
+	unsigned char	*names;
+
 	file = leave_header(content, size);
+	if (endswith(filepath, ".so") == -1)
+		names = print_labels(content, size);
+	else
+		names = NULL;
+//	file = leave_header(content, size);
 	i = 0;
 	while (g_int < size)
 	{
-		file = print_obj_name(file, size);
+		if (endswith(filepath, ".so") == -1)
+			names = print_names(names, filepath);
+		else
+		{
+			ft_putstr(filepath);
+			file = print_obj_name(file, size);
+		}
 		file = find_stack_frame(file, size);
-		symbols(file);
+		symbols(file, 1);
 		file = next_frame(file, size);
+		ft_putchar('\n');
 	}
 }
 

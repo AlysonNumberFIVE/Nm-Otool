@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:44:25 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 08:36:58 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 11:23:37 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int			main(int argc, char **argv)
 	void	*content;
 	size_t	size;
 	int		i;
-	void	(*otool_ptr )(void *);
+	void	(*otool_ptr )(void *, int );
 
 	otool_ptr = &otool;
 	if (argc == 1)
@@ -106,8 +106,12 @@ int			main(int argc, char **argv)
 	{
 		filename = argv[i];
 		read_file(&content, &size, filename);
-		nm_so(content, size, otool_ptr);
-		exit(1);
+		if (is_dynamic_lib(content) == 1)
+		{
+			nm_so(content, size, otool_ptr, filename);
+			i++;
+			continue ;
+		}
 		if (dymlib_magic(content))
 			content = dynamic_lib_read(content, size);
 		if (is_dynamic_lib((unsigned char *)content) == 1)
@@ -115,7 +119,7 @@ int			main(int argc, char **argv)
 			ft_putstr("Archive files not handled. [Coming soon]\n");
 			return (1);
 		} 
-		otool(content);
+		otool(content, 0);
 		i++;
 	}
 	return (0);
