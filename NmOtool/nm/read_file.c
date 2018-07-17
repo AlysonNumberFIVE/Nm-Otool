@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:28:22 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 13:56:50 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 15:58:53 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			is_valid(void *content, char *filename)
 	else
 	{
 		ft_putstr(filename);
-		ft_putstr(" : Invalid file\n");
+		ft_putstr(" : The file was not recognized as a valid object filen");
 	}
 	return (-1);
 }

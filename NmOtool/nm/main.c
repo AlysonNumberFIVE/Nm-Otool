@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 14:19:09 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/17 16:04:05 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,26 +74,28 @@ void			last_word(unsigned char *content, size_t size)
 
 int				main(int argc, char **argv)
 {
-	char	*filename;
 	void	*content;
 	size_t	size;
 	void	(*symbol_ptr)(void *);
-	char	*filepath;
+	int		i;
 
 	symbol_ptr = &symbols;
+	i = 0;
 	if (argc == 1)
-		filename = ft_strdup("a.out");
-	else
-		filename = ft_strdup(argv[1]);
-	if (read_file(&content, &size, filename) == -1)
-		return (0);
-	if (arc_magic(content) == 1)
 	{
-		filepath = ft_strdup(argv[1]);
-		nm_so(content, size, symbol_ptr, filepath);
-		exit(1);
+		argv[1] = "a.out";
+		argc++;
 	}
-	content = find_start((unsigned char *)content, size);
-	symbols(content);
-	free(filename);
+	while (++i < argc)
+	{
+		if (read_file(&content, &size, argv[i]) == -1)
+			continue ;
+		if (arc_magic(content) == 1)
+			nm_so(content, size, symbol_ptr, argv[i]);
+		else
+		{
+			content = find_start((unsigned char *)content, size);
+			symbols(content);
+		}
+	}
 }
