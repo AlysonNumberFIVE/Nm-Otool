@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:44:25 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 15:34:54 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/18 16:23:37 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			main(int argc, char **argv)
 			nm_so(content, size, otool_ptr, filename);
 		else
 		{
-			if (dymlib_magic(content))
+			if (dymlib_magic(content) == 1)
 				content = dynamic_lib_read(content, size);
 			line_put(filename);
 			otool(content, 0);

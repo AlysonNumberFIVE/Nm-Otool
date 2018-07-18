@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 12:00:31 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 16:14:45 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/18 15:54:52 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+int			signature_check_32(unsigned char *content)
+{
+	if (content[0] == 0xce &&
+		content[1] == 0xfa && 
+		content[2] == 0xed &&
+		content[3] == 0xfe &&
+		content[4] == 0x07 &&
+		content[5] == 0x00 &&
+		content[6] == 0x00 &&
+		content[7] == 0x00)
+		return (1);
+	return (-1);
+}
 
 int			cafe_babe(unsigned char *content)
 {
@@ -32,6 +46,8 @@ int			is_valid(void *content, char *filename)
 	if (arc_magic(content) == 1)
 		return (1);
 	if (signature_check(content) == 1)
+		return (1);
+	if (signature_check_32(content) == 1)
 		return (1);
 	else
 	{

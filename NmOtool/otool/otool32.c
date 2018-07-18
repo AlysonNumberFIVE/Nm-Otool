@@ -6,10 +6,10 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:46:50 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 15:39:07 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/18 16:26:11 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <string.h>
 #include "otool.h"
 
 void		object_seg_32(struct mach_header *seg, void *content,
@@ -25,7 +25,7 @@ void		object_seg_32(struct mach_header *seg, void *content,
 	sect = (struct section *)&seg[1];
 	while (42)
 	{
-		if (ft_strcmp(sect->sectname, "__text") == 0)
+		if (strcmp(sect->sectname, "__text") == 0)
 			break ;
 		sect = (struct section *)((void*)sect + sizeof(struct section *));
 	}
@@ -41,6 +41,7 @@ void		object_seg_32(struct mach_header *seg, void *content,
 
 void		otool_32(struct mach_header *header, void *content, int flag)
 {
+	ft_putstr("here\n");
 	header = (struct mach_header *)content;
 	object_seg_32(header, content, flag);
 }

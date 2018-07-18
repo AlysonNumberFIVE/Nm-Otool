@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 14:10:44 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 14:12:52 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/18 17:21:07 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ unsigned char	*print_names(unsigned char *content, char *filepath)
 
 	ft_putstr(filepath);
 	ft_putstr("(");
-	i = 0;
+	i = 1;
 	while (content[i])
 	{
 		ft_putchar(content[i]);
 		i++;
 	}
-	ft_putstr("):\n");
+	ft_putstr(".o):\n");
 	i++;
 	return (&content[i]);
 }

@@ -6,7 +6,7 @@
 #    By: angonyam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/16 12:07:54 by angonyam          #+#    #+#              #
-#    Updated: 2018/07/17 15:24:44 by angonyam         ###   ########.fr        #
+#    Updated: 2018/07/18 15:55:03 by angonyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIB = libft/libft.a
 
 all:
 	make -C libft
-	gcc -Wall -Werror -Wextra -c $(SRC)
+	gcc -g -Wall -Werror -Wextra -c $(SRC)
 	gcc -o $(EXEC) $(OBJ) $(LIB)
 
 clean:
