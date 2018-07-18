@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 12:00:31 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/18 15:54:52 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/18 17:44:14 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int			signature_check_32(unsigned char *content)
 {
 	if (content[0] == 0xce &&
-		content[1] == 0xfa && 
+		content[1] == 0xfa &&
 		content[2] == 0xed &&
 		content[3] == 0xfe &&
 		content[4] == 0x07 &&

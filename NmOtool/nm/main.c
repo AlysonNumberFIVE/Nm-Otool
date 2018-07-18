@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 16:04:05 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/18 17:48:25 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int				main(int argc, char **argv)
 			nm_so(content, size, symbol_ptr, argv[i]);
 		else
 		{
+			ft_putendl(argv[i]);
 			content = find_start((unsigned char *)content, size);
 			symbols(content);
 		}
