@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:20:15 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/16 11:22:14 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/19 07:23:41 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		print_32_sys(struct nlist *info)
 	if ((info->n_value & N_TYPE) == N_SECT &&
 			info->n_desc == N_ARM_THUMB_DEF)
 		value |= 1;
-	print_address_values(value, info->n_sect);
+	print_address_values(value, info->n_sect, 1);
 }
 
 void		string_segment(void *content,

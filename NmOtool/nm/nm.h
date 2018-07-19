@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/18 17:47:26 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/19 07:22:19 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int							read_file(void **content, size_t *size,
 							char *filename);
 void						symbols(void *content);
 void						print_address_values(unsigned long long hex,
-					int flag);
+					int flag, int is_32);
 void						nm_64(struct mach_header *header,
 					void *content, size_t size);
 void						nm_32(struct mach_header *header,
