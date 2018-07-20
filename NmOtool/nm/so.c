@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 13:57:21 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/18 17:42:36 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 09:50:42 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,22 @@ void			nm_so(unsigned char *content, size_t size,
 
 	ft_putstr(filepath);
 	file = leave_header(content, size);
-	names = print_labels(content, size);
+	if (endswith(filepath, ".so") == -1)
+		names = print_labels(content, size);
+	else
+		names = NULL;
 	i = 0;
 	while (g_int < size)
 	{
-		names = print_names(names, filepath);
+		if (endswith(filepath, ".so") == -1)
+		{
+			names = print_names(names, filepath);
+		}
+		else
+		{
+			ft_putstr(filepath);
+			file = print_obj_name(file, size);
+		}
 		file = find_stack_frame(file, size);
 		symbols(file);
 		file = next_frame(file, size);

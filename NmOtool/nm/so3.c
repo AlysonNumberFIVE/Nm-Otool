@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 14:10:05 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 14:17:34 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 09:59:14 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ unsigned char	*print_obj_name(unsigned char *content, size_t size)
 
 	ft_putchar('(');
 	i = 0;
+	while (i < size)
+	{
+		if (content[i] == 0x60 && content[i] + 0x0a)
+			break;
+		i++;
+	}
+	i += 2;
+	ft_putstr((const char *)&content[i]);
+	ft_putstr("):\n");
+	return (&content[i]);
 	while (content[i] != 0x20)
 	{
 		if (g_int >= size)
