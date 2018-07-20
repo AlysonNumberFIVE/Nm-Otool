@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:46:50 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/18 16:26:11 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:05:52 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <string.h>
@@ -41,7 +41,6 @@ void		object_seg_32(struct mach_header *seg, void *content,
 
 void		otool_32(struct mach_header *header, void *content, int flag)
 {
-	ft_putstr("here\n");
 	header = (struct mach_header *)content;
 	object_seg_32(header, content, flag);
 }

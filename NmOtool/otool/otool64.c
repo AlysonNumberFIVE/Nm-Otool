@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:49:27 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/17 13:12:59 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:03:35 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void		object_seg(struct mach_header_64 *seg,
 	{
 		if (ft_strcmp(sect->sectname, "__text") == 0)
 			break ;
-		sect = (struct section_64 *)((void*)sect + sizeof(struct section_64 *));
+		sect = (struct section_64 *)((void*)sect + 
+				sizeof(struct section_64 *));
 	}
 	start = sect->offset;
 	if (flag == 1)
