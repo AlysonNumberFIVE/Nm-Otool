@@ -6,13 +6,83 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:27:01 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/19 07:58:09 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 06:37:16 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 #include <stdio.h>
 #include <mach-o/stab.h>
+
+int							letter_segments(struct segment_command_64 *seg,
+						char ***array)
+{
+	int						j;
+	uint32_t				max;
+	uint32_t				i;
+	unsigned char 			*content;
+	struct section_64 		*sect;
+
+	max = seg->nsects;
+	
+	content = (unsigned char *)seg;
+	sect = (struct section_64 *)(seg + 1);
+	i = 0;
+	j = 0;
+	while (i< max)
+	{
+//		ft_putendl(sect->segname);
+		ft_putendl(sect->sectname);
+		*array = arraypush(*array, sect->sectname);
+		if (ft_strcmp(sect->sectname, "__eh_frame") == 0)
+			return (1);
+		sect = (struct section_64 *)((void*)sect +sizeof(struct section_64));
+		i++; 
+		 
+/*
+		if (ft_strstr((const char *)&content[j], "__LINKEDIT"))
+			break ;
+		if (ft_strstr((const char*)&content[j], "__"))
+		{
+			*array = arraypush(*array, (char *)&content[j]);
+			ft_putendl((const char*)&content[j]);
+			j += ft_strlen((const char *)&content[j]);
+			i++;
+		} 
+		j++; */
+	}
+	return (0);
+}
+
+char						**segment_extraction(struct load_command *comm,
+		int command_num)
+{
+	struct load_command		*keep;
+	int						i;
+	char					**array;
+
+	keep = comm;
+	array = NULL;
+	i = 0;
+	while (i < command_num)
+	{
+		if (keep->cmdsize == 0)
+		{
+			ft_putstr("exiting..\n");
+			break ;
+//			exit(1);
+		} 
+		if (keep->cmd == LC_SEGMENT_64)
+		{
+			if (letter_segments((struct segment_command_64 *)keep, &array) == 1)
+				break ;
+		}
+//		if (keep->cmd == LC_SYMTAB)
+//			break ;
+		keep = (struct load_command*)((char*)keep + keep->cmdsize);
+	}
+	return (array);
+}
 
 struct symtab_command		*iterate_through_load_commands(
 		struct load_command *comm,
@@ -55,6 +125,7 @@ void						which(unsigned int n_type,
 {
 	unsigned int			val;
 	unsigned int			shutup;
+	n_sect = 0;
 
 	shutup = n_value;
 	val = n_type & N_TYPE;
@@ -67,8 +138,8 @@ void						which(unsigned int n_type,
 	}
 	else if (val == N_ABS)
 		ft_putstr(" A ");
-	else if (val == N_SECT)
-		special_letters(n_sect, n_type);
+//	else if (val == N_SECT)
+//		special_letters(n_sect, n_type);
 }
 
 void						symbols(void *content)
