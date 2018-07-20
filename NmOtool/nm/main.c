@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/19 07:19:05 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 10:40:42 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,15 @@ void			last_word(unsigned char *content, size_t size)
 	symbols(content);
 }
 
+void			execution_head(char *argv, int argc)
+{
+	if (argc > 2)
+	{
+		ft_putstr(argv);
+		ft_putendl(":");
+	}
+}
+
 int				main(int argc, char **argv)
 {
 	void	*content;
@@ -94,7 +103,7 @@ int				main(int argc, char **argv)
 			nm_so(content, size, symbol_ptr, argv[i]);
 		else
 		{
-			ft_putendl(argv[i]);
+			execution_head(argv[i], argc);
 			content = find_start((unsigned char *)content, size);
 			symbols(content);
 		}

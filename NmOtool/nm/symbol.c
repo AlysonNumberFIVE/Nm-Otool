@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:27:01 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 08:43:30 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 12:17:16 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int							letter_segments(struct segment_command_64 *seg,
 	while (i< max)
 	{
 		*array = arraypush(*array, sect->sectname);
-		if (ft_strcmp(sect->sectname, "__eh_frame") == 0)
-			return (1);
+//		if (ft_strcmp(sect->sectname, "__eh_frame") == 0)
+//			return (1);
 		sect = (struct section_64 *)((void*)sect +
 				sizeof(struct section_64));
 		i++; 	 

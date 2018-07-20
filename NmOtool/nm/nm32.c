@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:20:15 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 09:05:18 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 12:44:50 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,9 @@ int			letter_segments_32(struct segment_command *seg,
     i = 0;
 	while (i < max)
     {
-		ft_putendl(sect->sectname);
 		*array = arraypush(*array, sect->sectname);
 	    if (ft_strcmp(sect->sectname, "__LINKEDIT") == 0)
-		{
   	         return (1);
-		}
         sect = (struct section *)((void*)sect +
                 sizeof(struct section));
         i++;

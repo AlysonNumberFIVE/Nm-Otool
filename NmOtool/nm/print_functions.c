@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:45 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 07:19:49 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 12:48:20 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void		pad_zeroes(int len)
 	}
 }
 
-#include <stdio.h>
-void		print_hex_value(unsigned long long hex)
+void		print_hex_value(unsigned long long hex, int is_32)
 {
 	size_t	i;
 	size_t	count;
@@ -59,17 +58,19 @@ void		print_hex_value(unsigned long long hex)
 		hex /= 16;
 		count--;
 	}
-	pad_zeroes(16 - ft_strlen(number_array));
+	pad_zeroes((is_32 == 1 ? 8 : 16) - ft_strlen(number_array));
 	ft_putstr(number_array);
 	ft_putstr(" ");
 }
 
-void		print_whitespace(void)
+void		print_whitespace(int is_32)
 {
 	int		i;
+	int		c;
 
+	c = is_32 == 1 ? 8 : 16;
 	i = 0;
-	while (i < 16)
+	while (i < c)
 	{
 		ft_putchar(' ');
 		i++;
@@ -77,9 +78,9 @@ void		print_whitespace(void)
 	ft_putchar(' ');
 }
 
-void		print_address_values(unsigned long long hex, int flag, int is_32)
+void		print_address_values(unsigned long long hex, int flag,
+		int is_32)
 {
-	is_32 = 0;
 	if (flag > 0 || hex > 0)
 	{
 		if (hex == 0)
@@ -88,8 +89,8 @@ void		print_address_values(unsigned long long hex, int flag, int is_32)
 			ft_putchar(' ');
 		}
 		else
-			print_hex_value(hex);
+			print_hex_value(hex, is_32);
 	}
 	else
-		print_whitespace();
+		print_whitespace(is_32);
 }

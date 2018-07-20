@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:12 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 09:42:51 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 12:45:12 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ void		print_val(char *word, int is_extern)
 	if (ft_strcmp(word, "__bss") == 0)
 		ft_putstr("b");
 	else if (ft_strcmp(word, "__text") == 0)
-		is_extern == 1 ? ft_putstr("T") : ft_putstr("t");
+		is_extern > 0 ? ft_putstr("T") : ft_putstr("t");
 	else if (ft_strcmp(word, "__data") == 0)
-		is_extern == 1 ? ft_putstr("D") : ft_putstr("d");
+		is_extern > 0 ? ft_putstr("D") : ft_putstr("d");
 	else if (ft_strcmp(word, "__const") == 0)
-		is_extern == 1 ? ft_putstr("S") : ft_putstr("s");
+		is_extern > 0 ? ft_putstr("S") : ft_putstr("s");
+	else if (ft_strcmp(word, "__common") == 0)
+		is_extern > 0 ? ft_putstr("S") : ft_putstr("s");
 	else
-		ft_putstr("S");
+		is_extern == 0 ? ft_putstr("s") : ft_putstr("S");
 }
 
 void		string_segment_64(void *content,
@@ -51,8 +53,13 @@ void		string_segment_64(void *content,
 			continue ;
 		name = &string_tab[info->n_un.n_strx];
 		print_address_values(info->n_value, info->n_sect, 0);
+		if ((info->n_type & N_TYPE) == N_INDR)
+			ft_putstr("I");
 		if ((info->n_type & N_TYPE) == N_SECT)
+		{
+//			ft_putstr(array[info->n_sect - 1]);
 			print_val(array[info->n_sect - 1], info->n_type & N_EXT);
+		}
 		which(info->n_type, info->n_sect, info->n_value);
 		print_name(name);
 	}
