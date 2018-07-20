@@ -1,226 +1,89 @@
-                 U _CFRunLoopAddObserver
-                 U _CFRunLoopAddTimer
-                 U _CFRunLoopGetMain
-                 U _CFRunLoopObserverCreate
-                 U _CFRunLoopTimerCreate
-                 U _CFRunLoopTimerInvalidate
-                 U _NSApp
-                 U _NSDefaultRunLoopMode
-                 U _OBJC_CLASS_$_NSApplication
-                 U _OBJC_CLASS_$_NSDate
-                 U _OBJC_CLASS_$_NSNotificationCenter
-                 U _OBJC_CLASS_$_NSOpenGLContext
-                 U _OBJC_CLASS_$_NSOpenGLPixelFormat
-                 U _OBJC_CLASS_$_NSOpenGLView
-                 U _OBJC_CLASS_$_NSRunningApplication
-                 U _OBJC_CLASS_$_NSString
-                 U _OBJC_CLASS_$_NSWindow
-                 U _OBJC_METACLASS_$_NSObject
-                 U _OBJC_METACLASS_$_NSOpenGLView
-                 U _OBJC_METACLASS_$_NSWindow
-                 U _TransformProcessType
-                 U ___CFConstantStringClassReference
+                 U _GSS_C_NT_HOSTBASED_SERVICE
+                 U _GSS_C_NT_USER_NAME
+                 U _GSS_KRB5_NT_PRINCIPAL_NAME
                  U ___bzero
+                 U ___memcpy_chk
+                 U ___snprintf_chk
+                 U ___sprintf_chk
                  U ___stack_chk_fail
                  U ___stack_chk_guard
-                 U ___stderrp
-                 U __objc_empty_cache
-                 U _abs
-                 U _close
-                 U _exit
-                 U _fputs
+                 U ___strcat_chk
+                 U _apple_gss_krb5_export_authdata_if_relevant_context
+                 U _apple_gss_krb5_free_authdata_if_relevant
+                 U _calloc
                  U _free
-                 U _fwrite
-                 U _glActiveTexture
-                 U _glAttachShader
-                 U _glBindBuffer
-                 U _glBindTexture
-                 U _glBlendEquation
-                 U _glBlendFunc
-                 U _glBufferData
-                 U _glClear
-                 U _glClearColor
-                 U _glCompileShader
-                 U _glCreateProgram
-                 U _glCreateShader
-                 U _glDeleteBuffers
-                 U _glDeleteProgram
-                 U _glDeleteShader
-                 U _glDeleteTextures
-                 U _glDisable
-                 U _glDisableVertexAttribArray
-                 U _glDrawArrays
-                 U _glEnable
-                 U _glEnableVertexAttribArray
-                 U _glFlush
-                 U _glGenBuffers
-                 U _glGenTextures
-                 U _glGetAttribLocation
-                 U _glGetProgramInfoLog
-                 U _glGetProgramiv
-                 U _glGetShaderInfoLog
-                 U _glGetShaderiv
-                 U _glGetUniformLocation
-                 U _glLinkProgram
-                 U _glShaderSource
-                 U _glTexImage2D
-                 U _glTexParameteri
-                 U _glTexSubImage2D
-                 U _glUniform1i
-                 U _glUniform2f
-                 U _glUniform4fv
-                 U _glUseProgram
-                 U _glVertexAttribPointer
-                 U _kCFAllocatorDefault
-                 U _kCFRunLoopCommonModes
-                 U _malloc
+                 U _freeaddrinfo
+                 U _getaddrinfo
+                 U _gss_accept_sec_context
+                 U _gss_acquire_cred
+                 U _gss_compare_name
+                 U _gss_delete_sec_context
+                 U _gss_display_name
+                 U _gss_display_status
+                 U _gss_import_name
+                 U _gss_init_sec_context
+                 U _gss_inquire_context
+                 U _gss_nt_krb5_principal
+                 U _gss_release_buffer
+                 U _gss_release_cred
+                 U _gss_release_name
+                 U _gss_unwrap
+                 U _gss_wrap
+                 U _gss_wrap_size_limit
+                 U _krb5_free_context
+                 U _krb5_free_principal
+                 U _krb5_init_context
+                 U _krb5_sname_to_principal
+                 U _krb5_unparse_name
                  U _memcpy
-                 U _objc_msgSend
-                 U _objc_msgSendSuper2
-                 U _open
-                 U _read
+                 U _strchr
+                 U _strcmp
+                 U _strcpy
                  U _strdup
+                 U _strerror
                  U _strlen
-                 U _usleep
-                 U _write
+                 U _strncpy
+                 U _uname
                  U dyld_stub_binder
-0000000100000000 T __mh_execute_header
-00000001000015f0 T _connect_dots_xy
-00000001000017d0 t _connect_dots_y
-0000000100001930 T _cal_dots_pos
-0000000100001c00 t _init_cal_dots_pos
-0000000100001c40 t _choose_color_dots
-0000000100001d50 T _pre_draw_line
-0000000100001ee0 t _draw_line
-0000000100002080 t _abs_swap
-0000000100002150 t _swap
-0000000100002180 T _keyboard_hook
-00000001000023b0 t _zoom_size_color
-0000000100002550 t _exit_program
-0000000100002620 t _color_lines
-00000001000026e0 T _draw
-0000000100002880 T _main
-0000000100002a80 t _error_checking
-0000000100002b40 t _print_map
-0000000100002bf0 t _init_val
-0000000100002ce0 T _locate_points_mem
-0000000100002dc0 t _locate_memory
-0000000100002ef0 T _store_map_data
-0000000100002fc0 t _get_map_size
-00000001000030d0 t _gnl_store_data
-00000001000031e0 t _store_map_char_manipulator
-00000001000032e0 t _store_map_data_from_line
-00000001000034f0 T _ft_memset
-0000000100003570 T _ft_bzero
-00000001000035a0 T _ft_strlen
-00000001000035e0 T _ft_strdup
-00000001000036b0 T _ft_strcpy
-0000000100003710 T _ft_strcat
-00000001000037c0 T _ft_strchr
-0000000100003860 T _ft_atoi
-0000000100003a40 T _ft_isdigit
-0000000100003a80 T _ft_strnew
-0000000100003af0 T _ft_strdel
-0000000100003b40 T _ft_strjoin
-0000000100003c40 T _ft_putchar
-0000000100003c70 T _ft_putstr
-0000000100003cc0 T _ft_putendl
-0000000100003cf0 T _ft_putnbr
-0000000100003db0 T _ft_isspace
-0000000100003e00 T _ft_countwords
-0000000100003f30 T _ft_chrindex
-0000000100003fb0 T _get_next_line
-0000000100004100 t _test_new_line
-00000001000041d0 t _test_new_line_buf
-0000000100004340 t _exit_func
-00000001000043a0 t _store_remain_data
-0000000100004460 T _display_log
-00000001000044d0 T _mlx_shaders_pixel
-0000000100004730 T _mlx_shaders_image
-0000000100004990 T _mlx_shaders_font
-0000000100004bf0 T _mlx_shaders
-0000000100004c30 T _get_mouse_button
-0000000100004c80 t -[NSWindowEvent initWithContentRect:styleMask:backing:defer:]
-0000000100004d80 t -[NSWindowEvent setEvent:andFunc:andParam:]
-0000000100004dd0 t -[NSWindowEvent setKeyRepeat:]
-0000000100004de0 t -[NSWindowEvent acceptsFirstResponder]
-0000000100004df0 t -[NSWindowEvent flagsChanged:]
-0000000100004ec0 t -[NSWindowEvent keyDown:]
-0000000100004f40 t -[NSWindowEvent keyUp:]
-0000000100004f90 t -[NSWindowEvent mouseDown:]
-0000000100005060 t -[NSWindowEvent rightMouseDown:]
-0000000100005130 t -[NSWindowEvent otherMouseDown:]
-0000000100005200 t -[NSWindowEvent mouseUp:]
-00000001000052d0 t -[NSWindowEvent rightMouseUp:]
-00000001000053a0 t -[NSWindowEvent otherMouseUp:]
-0000000100005470 t -[NSWindowEvent mouseMoved:]
-00000001000054d0 t -[NSWindowEvent mouseDragged:]
-0000000100005530 t -[NSWindowEvent rightMouseDragged:]
-0000000100005590 t -[NSWindowEvent otherMouseDragged:]
-00000001000055f0 t -[NSWindowEvent scrollWheel:]
-0000000100005700 t -[NSWindowEvent exposeNotification:]
-0000000100005730 t -[NSWindowEvent closeNotification:]
-0000000100005760 t -[NSWindowEvent deminiaturizeNotification:]
-0000000100005780 t -[MlxWin initWithRect:andTitle:pfaAttrs:]
-0000000100005a10 t -[MlxWin pixel_management]
-0000000100005d70 t -[MlxWin ctxNeedsUpdate]
-0000000100005d90 t -[MlxWin selectGLContext]
-0000000100005e00 t -[MlxWin flushGLContext]
-0000000100005e30 t -[MlxWin ctx]
-0000000100005e50 t -[MlxWin pixelPutColor:X:Y:]
-0000000100005ef0 t -[MlxWin destroyPixelManagement]
-0000000100005f90 t -[MlxWin destroyMe]
-0000000100006020 t -[MlxWin setEvent:andFunc:andParam:]
-0000000100006040 t -[MlxWin setKeyRepeat:]
-0000000100006060 t -[MlxWin clearWin]
-0000000100006080 t -[MlxWin mlx_gl_draw_img:andCtx:andX:andY:]
-00000001000061f0 t -[MlxWin mlx_gl_draw_font:andCtx:andX:andY:andColor:glyphX:glyphY:]
-0000000100006410 t -[MlxWin mlx_gl_draw]
-0000000100006580 T _mlx_new_window
-00000001000066b0 T _mlx_clear_window
-00000001000066f0 T _mlx_expose_hook
-0000000100006720 T _mlx_key_hook
-0000000100006750 T _mlx_mouse_hook
-0000000100006780 T _mlx_hook
-00000001000067a0 T _mlx_do_key_autorepeatoff
-00000001000067e0 T _mlx_do_key_autorepeaton
-0000000100006830 T _mlx_destroy_window
-0000000100006920 T _do_loop_hook2
-0000000100006930 T _do_loop_flush
-00000001000069a0 T _mlx_init
-0000000100006bb0 T _mlx_loop
-0000000100006c40 T _mlx_pixel_put
-0000000100006ca0 T _mlx_int_loop_once
-0000000100006d70 T _mlx_do_sync
-0000000100006ee0 T _mlx_loop_hook
-0000000100006fa0 T _mlx_new_image
-0000000100007050 T _add_img_to_ctx
-0000000100007190 T _mlx_put_image_to_window
-0000000100007250 T _mlx_get_data_addr
-0000000100007270 T _mlx_get_color_value
-0000000100007280 T _mlx_string_put
-0000000100007350 T _mlx_destroy_image
-00000001000078f0 s _pixel_vertexes
-0000000100007920 s _font_atlas
-000000010001fb88 S _OBJC_IVAR_$_NSWindowEvent.event_funct
-000000010001fb90 S _OBJC_IVAR_$_NSWindowEvent.event_param
-000000010001fb98 S _OBJC_IVAR_$_NSWindowEvent.keyrepeat
-000000010001fba0 S _OBJC_IVAR_$_NSWindowEvent.keyflag
-000000010001fba8 S _OBJC_IVAR_$_NSWindowEvent.size_x
-000000010001fbb0 S _OBJC_IVAR_$_NSWindowEvent.size_y
-000000010001fbb8 S _OBJC_IVAR_$_MlxWin.win
-000000010001fbc0 S _OBJC_IVAR_$_MlxWin.size_x
-000000010001fbc8 S _OBJC_IVAR_$_MlxWin.size_y
-000000010001fbd0 S _OBJC_IVAR_$_MlxWin.glsl
-000000010001fbd8 S _OBJC_IVAR_$_MlxWin.pixel_vbuffer
-000000010001fbe0 S _OBJC_IVAR_$_MlxWin.pixel_texture
-000000010001fbe8 S _OBJC_IVAR_$_MlxWin.pixtexbuff
-000000010001fbf0 S _OBJC_IVAR_$_MlxWin.pixel_nb
-000000010001fbf8 S _OBJC_IVAR_$_MlxWin.ctx
-000000010001fc00 S _OBJC_IVAR_$_MlxWin.openglwin
-000000010001fc08 S _OBJC_CLASS_$_NSWindowEvent
-000000010001fc30 S _OBJC_METACLASS_$_NSWindowEvent
-000000010001fc58 S _OBJC_CLASS_$_MlxWin
-000000010001fc80 S _OBJC_METACLASS_$_MlxWin
-000000010001fcb0 D _pfa_attrs
-000000010001fcc8 b _get_next_line.str
+0000000000000788 T _gssapiv2_server_plug_init
+00000000000007d0 T _gssapiv2_client_plug_init
+0000000000000835 t _gssapi_server_mech_new
+000000000000089c t _gssapi_server_mech_step
+00000000000017d4 t _gssapi_common_mech_dispose
+00000000000017f3 t _gssapi_common_mech_free
+0000000000001813 t _sasl_gss_new_context
+000000000000184b t _sasl_gss_seterror_
+0000000000001b82 t _sasl_gss_free_context_contents
+0000000000001d2a t _gssapi_integrity_encode
+0000000000001d37 t _gssapi_decode
+0000000000001d78 t _gssapi_privacy_encode
+0000000000001d88 t _sasl_gss_encode
+0000000000001fbc t _gssapi_decode_packet
+000000000000218c t _gssapi_client_mech_new
+00000000000021ee t _gssapi_client_mech_step
+0000000000003490 T _sasl_client_plug_init
+000000000000349a T _sasl_server_plug_init
+00000000000034a4 T __plug_ipfromstring
+00000000000036fb T __plug_iovec_to_buf
+000000000000383b T __plug_buf_alloc
+0000000000003935 T __plug_strdup
+00000000000039ed T __plug_free_string
+0000000000003a3c T __plug_free_secret
+0000000000003a7b T __plug_find_prompt
+0000000000003aac T __plug_get_simple
+0000000000003bcd T __plug_get_password
+0000000000003d2e T __plug_challenge_prompt
+0000000000003e34 T __plug_get_realm
+0000000000003f21 T __plug_make_prompts
+00000000000040e1 T __plug_decode_init
+0000000000004109 T __plug_decode
+000000000000430a T __plug_decode_free
+0000000000004323 T __plug_parseuser
+000000000000445c T __plug_make_fulluser
+000000000000453b T __plug_get_error_message
+0000000000004577 T __plug_snprintf_os_info
+0000000000004f18 s _sasl_gss_seterror_.prefix
+0000000000004f28 s _gssapi_required_prompts
+0000000000005180 d _gssapi_server_plugins
+00000000000051f0 d _gssapi_client_plugins
+0000000000005250 b _gss_mutex
