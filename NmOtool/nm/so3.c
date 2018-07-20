@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 14:10:05 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 09:59:14 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:41:01 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ unsigned char	*print_obj_name(unsigned char *content, size_t size)
 	while (i < size)
 	{
 		if (content[i] == 0x60 && content[i] + 0x0a)
-			break;
+			break ;
 		i++;
 	}
 	i += 2;

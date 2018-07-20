@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:45 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 12:48:20 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:39:05 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void		print_address_values(unsigned long long hex, int flag,
 	{
 		if (hex == 0)
 		{
-			pad_zeroes(16);
+			if (is_32 == 0)
+				pad_zeroes(16);
+			else
+				pad_zeroes(8);
 			ft_putchar(' ');
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:20:15 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 12:44:50 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:21:56 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,39 +50,27 @@ void		string_segment(void *content,
 }
 
 int			letter_segments_32(struct segment_command *seg,
-	char ***array)
+		char ***array)
 {
-    uint32_t                max;
-    uint32_t                i;
-    unsigned char           *content;
-    struct section       *sect;
+	uint32_t				max;
+	uint32_t				i;
+	unsigned char			*content;
+	struct section			*sect;
 
-    max = seg->nsects;
-    content = (unsigned char *)seg;
-    sect = (struct section *)(seg + 1);
-    i = 0;
+	max = seg->nsects;
+	content = (unsigned char *)seg;
+	sect = (struct section *)(seg + 1);
+	i = 0;
 	while (i < max)
-    {
+	{
 		*array = arraypush(*array, sect->sectname);
-	    if (ft_strcmp(sect->sectname, "__LINKEDIT") == 0)
-  	         return (1);
-        sect = (struct section *)((void*)sect +
-                sizeof(struct section));
-        i++;
-    }
-    return (0);
-}
-
-char		**segment_extraction_32(struct load_command *comm,
-	int command_num)
-{
-    struct load_command     *keep;
-    char                    **array;
-	command_num = 0;
-	array = NULL;	
-	keep = comm;
-	letter_segments_32((struct segment_command *)keep, &array);
-	return (array);
+		if (ft_strcmp(sect->sectname, "__LINKEDIT") == 0)
+			return (1);
+		sect = (struct section *)((void*)sect +
+				sizeof(struct section));
+		i++;
+	}
+	return (0);
 }
 
 char		**segment_extract_sys_32(struct load_command *comm,

@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:12 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 12:45:12 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:39:19 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ void		string_segment_64(void *content,
 		if ((info->n_type & N_TYPE) == N_INDR)
 			ft_putstr("I");
 		if ((info->n_type & N_TYPE) == N_SECT)
-		{
-//			ft_putstr(array[info->n_sect - 1]);
 			print_val(array[info->n_sect - 1], info->n_type & N_EXT);
-		}
 		which(info->n_type, info->n_sect, info->n_value);
 		print_name(name);
 	}

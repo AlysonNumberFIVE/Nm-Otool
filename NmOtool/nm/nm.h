@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 12:45:46 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:42:37 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <mach-o/swap.h>
 # include "libft/libft.h"
 
+void						execution_head(char *argv, int argc);
+int         				is_64_or_32(struct mach_header *head);
+int							letter_segments_32(struct segment_command *seg,
+       					 char ***array);
+char						**segment_extraction_32(struct load_command 
+						*comm, int command_num);
 void						free_2d_array(void **array);
 void						print_val(char *word, int is_extern);
 char                        **segment_extraction(struct load_command *comm,

@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:27:01 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 12:17:16 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:37:18 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,19 @@ int							letter_segments(struct segment_command_64 *seg,
 {
 	uint32_t				max;
 	uint32_t				i;
-	unsigned char 			*content;
-	struct section_64 		*sect;
+	unsigned char			*content;
+	struct section_64		*sect;
 
 	max = seg->nsects;
 	content = (unsigned char *)seg;
 	sect = (struct section_64 *)(seg + 1);
 	i = 0;
-	while (i< max)
+	while (i < max)
 	{
 		*array = arraypush(*array, sect->sectname);
-//		if (ft_strcmp(sect->sectname, "__eh_frame") == 0)
-//			return (1);
 		sect = (struct section_64 *)((void*)sect +
 				sizeof(struct section_64));
-		i++; 	 
+		i++;
 	}
 	return (0);
 }
@@ -50,11 +48,9 @@ char						**segment_extraction(struct load_command *comm,
 	i = 0;
 	while (i < command_num)
 	{
-//		if (keep->cmdsize == 0)
-//			break ;
 		if (keep->cmd == LC_SEGMENT_64)
 		{
-			if (letter_segments((struct segment_command_64 *)keep, 
+			if (letter_segments((struct segment_command_64 *)keep,
 						&array) == 1)
 				break ;
 		}
@@ -89,14 +85,6 @@ struct symtab_command		*iterate_through_load_commands(
 		i++;
 	}
 	return (tabs);
-}
-
-int							is_64_or_32(struct mach_header *head)
-{
-	if (head->magic == MH_MAGIC_64)
-		return (1);
-	else
-		return (-1);
 }
 
 void						which(unsigned int n_type,

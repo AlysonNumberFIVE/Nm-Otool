@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:33:30 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 10:40:42 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:42:56 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,6 @@ void			last_word(unsigned char *content, size_t size)
 	i += func_name(&content[i]);
 	content = find_signature(&content[i]);
 	symbols(content);
-}
-
-void			execution_head(char *argv, int argc)
-{
-	if (argc > 2)
-	{
-		ft_putstr(argv);
-		ft_putendl(":");
-	}
 }
 
 int				main(int argc, char **argv)
