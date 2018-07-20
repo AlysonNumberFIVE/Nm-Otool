@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:20:15 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/20 08:20:04 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 09:05:18 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ int			letter_segments_32(struct segment_command *seg,
     content = (unsigned char *)seg;
     sect = (struct section *)(seg + 1);
     i = 0;
-	*array = NULL;
 	while (i < max)
     {
 		ft_putendl(sect->sectname);
 		*array = arraypush(*array, sect->sectname);
-        if (ft_strcmp(sect->sectname, "__eh_frame") == 0)
-            return (1);
+	    if (ft_strcmp(sect->sectname, "__LINKEDIT") == 0)
+		{
+  	         return (1);
+		}
         sect = (struct section *)((void*)sect +
                 sizeof(struct section));
         i++;
@@ -80,10 +81,36 @@ char		**segment_extraction_32(struct load_command *comm,
 {
     struct load_command     *keep;
     char                    **array;
-
+	command_num = 0;
 	array = NULL;	
 	keep = comm;
 	letter_segments_32((struct segment_command *)keep, &array);
+	return (array);
+}
+
+char		**segment_extract_sys_32(struct load_command *comm,
+		int command_num)
+{
+	struct load_command		*keep;
+	char					**array;
+	int						i;
+
+	keep = comm;
+	array = NULL;
+	i = 0;
+	while (i < command_num)
+	{
+		if (keep->cmdsize == 0)
+			break ;
+		if (keep->cmd == LC_SEGMENT)
+		{
+			if (letter_segments_32((struct segment_command *)keep,
+						&array) == 1)
+				break ;
+		}
+		keep = (struct load_command *)((char*)keep + keep->cmdsize);
+		i++;
+	}
 	return (array);
 }
 
@@ -99,6 +126,7 @@ void		nm_32(struct mach_header *header,
 	load = (struct load_command *)&header[1];
 	command_num = header->ncmds;
 	tab = iterate_through_load_commands(load, command_num);
-	array = segment_extraction_32(load, command_num);
+	array = segment_extract_sys_32(load, command_num);
 	string_segment(content, tab, array);
+	free_2d_array((void**)array);
 }

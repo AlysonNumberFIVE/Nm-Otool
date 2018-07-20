@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:34:40 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/19 17:29:33 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 08:23:50 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <mach-o/loader.h>
 # include <mach-o/swap.h>
 # include "libft/libft.h"
- char                        **segment_extraction(struct load_command *comm,
+
+void						free_2d_array(void **array);
+void						print_val(char *word, int is_extern);
+char                        **segment_extraction(struct load_command *comm,
 		 			int command_num);
 void						segments(unsigned char *content, size_t size);
 int							endswith(char *str, char *end);
@@ -60,7 +63,7 @@ void						nm_64(struct mach_header *header,
 void						nm_32(struct mach_header *header,
 							void *content);
 void						string_segment(void *content,
-							struct symtab_command *tab);
+							struct symtab_command *tab, char **array);
 void						which_is_it_again(int n_sect, int n_type);
 struct symtab_command		*iterate_through_load_commands(struct
 					load_command *comm, int command_num);

@@ -6,7 +6,7 @@
 /*   By: angonyam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 11:24:45 by angonyam          #+#    #+#             */
-/*   Updated: 2018/07/19 16:45:41 by angonyam         ###   ########.fr       */
+/*   Updated: 2018/07/20 07:19:49 by angonyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		print_hex_value(unsigned long long hex)
 	char	number_array[hex_number_length(hex) + 1];
 	char	c;
 
-	count = hex_number_length(hex) - 1;
+	count = hex_number_length(hex);
 	i = 0;
 	number_array[count] = '\0';
 	count--;
@@ -80,7 +80,7 @@ void		print_whitespace(void)
 void		print_address_values(unsigned long long hex, int flag, int is_32)
 {
 	is_32 = 0;
-	if (flag > 0)
+	if (flag > 0 || hex > 0)
 	{
 		if (hex == 0)
 		{
